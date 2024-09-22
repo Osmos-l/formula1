@@ -40,15 +40,15 @@ export const getLatestSessionFromMeeting = async(meeting: Meeting): Promise<Sess
     }
 }
 
-export const getLatestWeatherUpdateFromSession = async(session: Session): Promise<Weather> => {
+export const getLatestWeatherUpdateFromSession = async(session: Session): Promise<Weather[]> => {
     try {
         const res = await fetch(`${BASE_URL}/weather?meeting_key=${session.meeting_key}&session_key=${session.session_key}`);
 
         const latestWeatherData = await res.json();
         
-        return latestWeatherData[latestWeatherData.length -1];
+        return latestWeatherData.reverse();
     } catch (error: any) {
         sendErrorToDashboard(error);
-        return DEFAULT_WEATHER;
+        return [DEFAULT_WEATHER];
     }
 }
