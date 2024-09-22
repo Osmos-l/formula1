@@ -46,7 +46,7 @@ export const getLatestWeatherUpdateFromSession = async(session: Session): Promis
 
         const latestWeatherData = await res.json();
         
-        return latestWeatherData[0];
+        return latestWeatherData[latestWeatherData.length -1];
     } catch (error: any) {
         sendErrorToDashboard(error);
         return DEFAULT_WEATHER;
