@@ -1,4 +1,3 @@
-import Image from "next/image";
 import LatestMeetingPreview from "@/components/LatestMeetingPreview";
 
 export default async function Home() {

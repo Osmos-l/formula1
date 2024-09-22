@@ -16,7 +16,7 @@ export const getLatestMeeting = async(): Promise<Meeting> => {
         const latestMeetingData = await res.json();
         
         return latestMeetingData[0];
-    } catch (error: any) {
+    } catch (error) {
         sendErrorToDashboard(error);
         return DEFAULT_MEETING;
     }
@@ -34,7 +34,7 @@ export const getLatestSessionFromMeeting = async(meeting: Meeting): Promise<Sess
         const latestSessionData = await res.json();
         
         return latestSessionData[0];
-    } catch (error: any) {
+    } catch (error) {
         sendErrorToDashboard(error);
         return DEFAULT_SESSION;
     }
@@ -47,7 +47,7 @@ export const getLatestWeatherUpdateFromSession = async(session: Session): Promis
         const latestWeatherData = await res.json();
         
         return latestWeatherData.reverse();
-    } catch (error: any) {
+    } catch (error) {
         sendErrorToDashboard(error);
         return [DEFAULT_WEATHER];
     }
