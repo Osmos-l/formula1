@@ -16,13 +16,21 @@ const LapRow = ({ lap }: { lap: Lap}) => {
         return ( <p>No Lap !</p> )
     }
 
+    const getSectorColorClass = (segmentSector: number[] | undefined) => {
+        if (!segmentSector) return '';
+
+        if (segmentSector.includes(2051)) return 'bg-purple-500';
+        if (segmentSector.includes(2049)) return 'bg-green-500';
+        if (segmentSector.includes(2048)) return 'bg-yellow-500';
+    };
+
     return (
         <tr>
             <td>{lap.lap_number ?? "N/A"}</td>
             <td>{lap.driver_number ?? "N/A"}</td>
-            <td>{lap.duration_sector_1 ?? "N/A"}</td>
-            <td>{lap.duration_sector_2 ?? "N/A"}</td>
-            <td>{lap.duration_sector_3 ?? "N/A"}</td>
+            <td className={getSectorColorClass(lap.segments_sector_1)}>{lap.duration_sector_1 ?? "N/A"}</td>
+            <td className={getSectorColorClass(lap.segments_sector_2)}>{lap.duration_sector_2 ?? "N/A"}</td>
+            <td className={getSectorColorClass(lap.segments_sector_3)}>{lap.duration_sector_3 ?? "N/A"}</td>
             <td>{lap.is_pit_out_lap ? "Oui" : "Non"}</td>
         </tr>
     );
