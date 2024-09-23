@@ -12,15 +12,19 @@ interface LapsPreviewProps {
 const one_minute_into_ms = 60000;
 
 const LapRow = ({ lap }: { lap: Lap}) => {
+    if (!lap) {
+        return ( <p>No Lap !</p> )
+    }
+
     return (
-        <div className="w-full flex justify-around p-2">
-            <span>{lap.lap_number}</span>
-            <span>{lap.driver_number}</span>
-            <span>{lap.duration_sector_1}</span>
-            <span>{lap.duration_sector_2}</span>
-            <span>{lap.duration_sector_3}</span>
-            <span>{lap.is_pit_out_lap && "Oui" }</span>
-        </div>
+        <tr>
+            <td>{lap.lap_number ?? "N/A"}</td>
+            <td>{lap.driver_number ?? "N/A"}</td>
+            <td>{lap.duration_sector_1 ?? "N/A"}</td>
+            <td>{lap.duration_sector_2 ?? "N/A"}</td>
+            <td>{lap.duration_sector_3 ?? "N/A"}</td>
+            <td>{lap.is_pit_out_lap ? "Oui" : "Non"}</td>
+        </tr>
     );
 };
 
@@ -42,22 +46,27 @@ export default function LapsPreview({ session }: LapsPreviewProps) {
     }, [session])
 
     return (
-        <div className='p-2'>
+        <div className='h-full p-2'>
             <h1>Laps <span className="italic text-xs">(Updated every minute)</span></h1>
-            <div className="w-full flex justify-around p-2">
-                <span>Lap: </span>
-                <span>Driver: </span>
-                <span>Sector 1: </span>
-                <span>Sector 2: </span>
-                <span>Sector 3: </span>
-                <span>Pit: </span>
-            </div>
-            <div className="overflow-auto h-screen max-h-screen">
-            {lapsMap && lapsMap.map((lap, i) => (
-                        <LapRow key={i} lap={lap} />
-                    ))}
-            </div>
-            
+            <div className="h-full overflow-auto">
+            <table className="table-auto">
+                <thead>
+                    <tr>
+                        <th>Lap</th>
+                        <th>Driver</th>
+                        <th>Sector 1</th>
+                        <th>Sector 2</th>
+                        <th>Sector 3</th>
+                        <th>Pit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {lapsMap && lapsMap.slice(0, 150).map((lap, i) => (
+                            <LapRow key={i} lap={lap} />
+                        ))}
+                </tbody>
+            </table>      
+            </div>      
         </div>
     );
 }
