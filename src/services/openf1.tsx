@@ -1,3 +1,4 @@
+import { DEFAULT_LAP, Lap } from '@/models/openf1/lap';
 import { Meeting, DEFAULT_MEETING } from '@/models/openf1/meeting';
 import { Session, DEFAULT_SESSION } from '@/models/openf1/session';
 import { Weather, DEFAULT_WEATHER} from '@/models/openf1/weather';
@@ -50,5 +51,18 @@ export const getLatestWeatherUpdateFromSession = async(session: Session): Promis
     } catch (error) {
         sendErrorToDashboard(error);
         return [DEFAULT_WEATHER];
+    }
+}
+
+export const getLapsFromSession = async(session: Session): Promise<Lap[]> => {
+    try {
+        const res = await fetch(`${BASE_URL}/laps?meeting_key=${session.meeting_key}&session_key=${session.session_key}`);
+
+        const lapsData = await res.json();
+        
+        return lapsData.reverse();
+    } catch (error) {
+        sendErrorToDashboard(error);
+        return [DEFAULT_LAP]
     }
 }

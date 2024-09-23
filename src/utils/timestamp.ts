@@ -11,3 +11,12 @@ export const convertToHumanReadableTime = (timestamp: string) => {
     };
     return date.toLocaleTimeString(undefined, options);
 }
+
+export const convertToHumanReadableTimeWithoutTimeZone = (timestamp: string) => {
+    const date = new Date(timestamp);
+    const options: Intl.DateTimeFormatOptions = { 
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+    return date.toLocaleTimeString(undefined, options);
+}
