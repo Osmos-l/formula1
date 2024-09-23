@@ -25,13 +25,14 @@ const LapRow = ({ lap }: { lap: Lap}) => {
     };
 
     return (
-        <tr>
+        <tr className="text-center">
             <td>{lap.lap_number ?? "N/A"}</td>
             <td>{lap.driver_number ?? "N/A"}</td>
             <td className={getSectorColorClass(lap.segments_sector_1)}>{lap.duration_sector_1 ?? "N/A"}</td>
             <td className={getSectorColorClass(lap.segments_sector_2)}>{lap.duration_sector_2 ?? "N/A"}</td>
             <td className={getSectorColorClass(lap.segments_sector_3)}>{lap.duration_sector_3 ?? "N/A"}</td>
-            <td>{lap.is_pit_out_lap ? "Oui" : "Non"}</td>
+            <td>{lap.st_speed}</td>
+            <td>{lap.is_pit_out_lap ? "Yes" : "No"}</td>
         </tr>
     );
 };
@@ -57,7 +58,7 @@ export default function LapsPreview({ session }: LapsPreviewProps) {
         <div className='h-full p-2'>
             <h1>Laps <span className="italic text-xs">(Updated every minute)</span></h1>
             <div className="h-full overflow-auto">
-            <table className="table-auto">
+            <table className="table-auto w-full">
                 <thead>
                     <tr>
                         <th>Lap</th>
@@ -65,6 +66,7 @@ export default function LapsPreview({ session }: LapsPreviewProps) {
                         <th>Sector 1</th>
                         <th>Sector 2</th>
                         <th>Sector 3</th>
+                        <th>Top Speed (km/h)</th>
                         <th>Pit</th>
                     </tr>
                 </thead>
