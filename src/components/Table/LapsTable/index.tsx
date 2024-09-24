@@ -2,7 +2,7 @@ import { Lap } from "@/models/openf1/lap";
 
 const TableHeader = () => {
     return (
-        <thead>
+        <thead className="sticky top-0 bg-gray-100">
             <tr>
                 <th>Lap</th>
                 <th>Driver</th>
