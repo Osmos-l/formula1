@@ -3,8 +3,8 @@
 import LapsPreview from "@/components/LapsPreview";
 import MeetingPreview from "@/components/MeetingPreview";
 import WeatherPreview from "@/components/WeatherPreview";
-import { getLatestMeeting, getLatestSessionFromMeeting } from "@/api/openf1";
-import { inject, observer } from "mobx-react";
+import { getLatestSessionFromMeeting } from "@/api/openf1";
+import { observer } from "mobx-react";
 import store from "@/stores/AppStore";
 import { MeetingInstance } from "@/stores/models/Meeting";
 import { useEffect, useState } from "react";
