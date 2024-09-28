@@ -1,5 +1,9 @@
-export type Meeting = {
+export type DTOMeeting = {
     circuit_key: number,
+    country_code: string,
+    country_key: number,
+    date_start: string,
+    gmt_offset: string,
     circuit_short_name: string,
     meeting_key: number,
     location: string,
@@ -8,16 +12,4 @@ export type Meeting = {
     meeting_name: string,
     meeting_official_name: string,
     year: number
-}
-
-export const DEFAULT_MEETING: Meeting = {
-    circuit_key: 0,
-    circuit_short_name: "Not Found",
-    meeting_key: 0,
-    location: "Nount Found",
-    country_name: "Not Found",
-    meeting_code: "N/A",
-    meeting_name: "Not Found",
-    meeting_official_name: "Not Found",
-    year: 0
 }

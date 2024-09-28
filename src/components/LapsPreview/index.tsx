@@ -2,7 +2,7 @@
 
 import { Lap } from "@/models/openf1/lap";
 import { Session } from "@/models/openf1/session";
-import { getLapsFromSession } from '@/services/openf1';
+import { getLapsFromSession } from '@/api/openf1';
 import { useEffect, useState } from "react";
 import LapsTable from "../Table/LapsTable";
 import LapsTableSkeleton from "../Table/LapsTableSkeleton";

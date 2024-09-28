@@ -1,8 +1,8 @@
 import { DEFAULT_LAP, Lap } from '@/models/openf1/lap';
-import { Meeting, DEFAULT_MEETING } from '@/models/openf1/meeting';
+import { DTOMeeting } from '@/models/openf1/meeting';
 import { Session, DEFAULT_SESSION } from '@/models/openf1/session';
 import { Weather, DEFAULT_WEATHER} from '@/models/openf1/weather';
-import { sendErrorToDashboard } from '@/services/uncaughtException';
+import { sendErrorToDashboard } from '@/api/uncaughtException';
 
 const BASE_URL = 'https://api.openf1.org/v1'
 
@@ -10,7 +10,7 @@ const BASE_URL = 'https://api.openf1.org/v1'
  * Fetch the latest F1 Meeting
  * @returns LatestMeeting: Meeting
  */
-export const getLatestMeeting = async(): Promise<Meeting> => {
+export const getLatestMeeting = async(): Promise<DTOMeeting | null> => {
     try {
         const res = await fetch(`${BASE_URL}/meetings?meeting_key=latest`);
 
@@ -19,7 +19,7 @@ export const getLatestMeeting = async(): Promise<Meeting> => {
         return latestMeetingData[0];
     } catch (error) {
         sendErrorToDashboard(error);
-        return DEFAULT_MEETING;
+        return null;
     }
 }
 
@@ -28,7 +28,7 @@ export const getLatestMeeting = async(): Promise<Meeting> => {
  * @param meeting the associated meeting
  * @returns the latest session
  */
-export const getLatestSessionFromMeeting = async(meeting: Meeting): Promise<Session> => {
+export const getLatestSessionFromMeeting = async(meeting: DTOMeeting): Promise<Session> => {
     try {
         const res = await fetch(`${BASE_URL}/sessions?meeting_key=${meeting.meeting_key}&session_key=latest`);
 

@@ -2,7 +2,7 @@
 
 import { Session } from "@/models/openf1/session";
 import { Weather } from "@/models/openf1/weather";
-import { getLatestWeatherUpdateFromSession } from '@/services/openf1';
+import { getLatestWeatherUpdateFromSession } from '@/api/openf1';
 import { convertToHumanReadableTimeWithoutTimeZone } from "@/utils/timestamp";
 import { useEffect, useState } from "react";
 

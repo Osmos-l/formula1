@@ -1,9 +1,9 @@
 import { convertToHumanReadableDate, convertToHumanReadableTime } from '@/utils/timestamp';
-import { Meeting } from "@/models/openf1/meeting";
+import { DTOMeeting } from "@/models/openf1/meeting";
 import { Session } from '@/models/openf1/session';
 
 interface MeetingPreviewProps {
-    meeting: Meeting,
+    meeting: DTOMeeting,
     session: Session
 }
 export default function MeetingPreview({ meeting, session }: MeetingPreviewProps) {
