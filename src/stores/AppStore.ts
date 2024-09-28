@@ -1,15 +1,14 @@
 import { types, SnapshotIn } from 'mobx-state-tree';
+import MeetingStore from './MeetingStore';
 
 const AppStore = types.model('AppStore', {
-    count: types.optional(types.number, 0),
-    name: types.optional(types.string, '')
+   meeting: types.optional(MeetingStore, {})
 })
 
-type AppStoreSnapshotIn = SnapshotIn<typeof AppStore>;
+export type AppStoreSnapshotIn = SnapshotIn<typeof AppStore>;
 
 const initialStore: AppStoreSnapshotIn = {
-    count: 0,
-    name: ''
+    meeting: {}
 }
 
 export const createStore = (data: Partial<AppStoreSnapshotIn> = {}) => AppStore.create({ ...initialStore, ...data });

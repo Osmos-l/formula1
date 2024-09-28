@@ -3,6 +3,7 @@ import { DTOMeeting } from '@/models/openf1/meeting';
 import { Session, DEFAULT_SESSION } from '@/models/openf1/session';
 import { Weather, DEFAULT_WEATHER} from '@/models/openf1/weather';
 import { sendErrorToDashboard } from '@/api/uncaughtException';
+import { MeetingInstance } from '@/stores/models/Meeting';
 
 const BASE_URL = 'https://api.openf1.org/v1'
 
@@ -28,7 +29,7 @@ export const getLatestMeeting = async(): Promise<DTOMeeting | null> => {
  * @param meeting the associated meeting
  * @returns the latest session
  */
-export const getLatestSessionFromMeeting = async(meeting: DTOMeeting): Promise<Session> => {
+export const getLatestSessionFromMeeting = async(meeting: MeetingInstance): Promise<Session> => {
     try {
         const res = await fetch(`${BASE_URL}/sessions?meeting_key=${meeting.meeting_key}&session_key=latest`);
 
