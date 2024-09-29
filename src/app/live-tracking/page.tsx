@@ -8,7 +8,7 @@ import { inject, observer } from "mobx-react";
 import { MeetingInstance } from "@/stores/models/Meeting";
 import { useEffect, useState } from "react";
 import { Session } from "@/models/openf1/session";
-import AppStore, { AppStoreSnapshotIn } from "@/stores/AppStore";
+import AppStore from "@/stores/AppStore";
 import { Instance } from "mobx-state-tree";
 
 interface MyComponentProps {
