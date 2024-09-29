@@ -8,23 +8,6 @@ import { MeetingInstance } from '@/stores/models/Meeting';
 const BASE_URL = 'https://api.openf1.org/v1'
 
 /**
- * Fetch the latest F1 Meeting
- * @returns LatestMeeting: Meeting
- */
-export const getLatestMeeting = async(): Promise<DTOMeeting | null> => {
-    try {
-        const res = await fetch(`${BASE_URL}/meetings?meeting_key=latest`);
-
-        const latestMeetingData = await res.json();
-        
-        return latestMeetingData[0];
-    } catch (error) {
-        sendErrorToDashboard(error);
-        return null;
-    }
-}
-
-/**
  * Fetch the latest session of the meeting
  * @param meeting the associated meeting
  * @returns the latest session
