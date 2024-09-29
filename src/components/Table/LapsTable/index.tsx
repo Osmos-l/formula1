@@ -1,4 +1,4 @@
-import { Lap } from "@/models/openf1/lap";
+import { DTOLap } from "@/models/openf1/lap";
 
 const TableHeader = () => {
     return (
@@ -17,7 +17,7 @@ const TableHeader = () => {
 }
 
 interface RowProps {
-    lap: Lap
+    lap: DTOLap
 }
 const Row = ({ lap }: RowProps) => {
     const getSectorColorClass = (segmentSector: number[] | undefined) => {
@@ -42,7 +42,7 @@ const Row = ({ lap }: RowProps) => {
 }
 
 interface LapsTableProps {
-    laps: Lap[]
+    laps: DTOLap[]
 }
 export default function LapsTable({ laps }: LapsTableProps) {
     return (

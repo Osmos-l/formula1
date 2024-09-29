@@ -1,4 +1,4 @@
-export type Weather = {
+export type DTOWeather = {
     air_temperature: number,
     date: string,
     humidity: number,

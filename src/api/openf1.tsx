@@ -1,7 +1,7 @@
-import { DEFAULT_LAP, Lap } from '@/models/openf1/lap';
-import { DTOMeeting } from '@/models/openf1/meeting';
-import { Session, DEFAULT_SESSION } from '@/models/openf1/session';
-import { Weather, DEFAULT_WEATHER} from '@/models/openf1/weather';
+import { DEFAULT_LAP, DTOLap } from '@/api/models/lap';
+import { DTOMeeting } from '@/api/models/meeting';
+import { DTOSession, DEFAULT_SESSION } from '@/api/models/session';
+import { DTOWeather, DEFAULT_WEATHER} from '@/api/models/weather';
 import { sendErrorToDashboard } from '@/api/uncaughtException';
 import { MeetingInstance } from '@/stores/models/Meeting';
 
@@ -29,7 +29,7 @@ export const getLatestMeeting = async(): Promise<DTOMeeting | null> => {
  * @param meeting the associated meeting
  * @returns the latest session
  */
-export const getLatestSessionFromMeeting = async(meeting: MeetingInstance): Promise<Session> => {
+export const getLatestSessionFromMeeting = async(meeting: MeetingInstance): Promise<DTOSession> => {
     try {
         const res = await fetch(`${BASE_URL}/sessions?meeting_key=${meeting.meeting_key}&session_key=latest`);
 
@@ -42,7 +42,7 @@ export const getLatestSessionFromMeeting = async(meeting: MeetingInstance): Prom
     }
 }
 
-export const getLatestWeatherUpdateFromSession = async(session: Session): Promise<Weather[]> => {
+export const getLatestWeatherUpdateFromSession = async(session: DTOSession): Promise<DTOWeather[]> => {
     try {
         const res = await fetch(`${BASE_URL}/weather?meeting_key=${session.meeting_key}&session_key=${session.session_key}`);
 
@@ -55,7 +55,7 @@ export const getLatestWeatherUpdateFromSession = async(session: Session): Promis
     }
 }
 
-export const getLapsFromSession = async(session: Session): Promise<Lap[]> => {
+export const getLapsFromSession = async(session: DTOSession): Promise<DTOLap[]> => {
     try {
         const res = await fetch(`${BASE_URL}/laps?meeting_key=${session.meeting_key}&session_key=${session.session_key}`);
 

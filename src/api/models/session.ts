@@ -1,4 +1,4 @@
-export type Session = {
+export type DTOSession = {
     circuit_key: number,
     circuit_short_name: string,
     country_code: string,
@@ -15,7 +15,7 @@ export type Session = {
     year: number
 }
 
-export const DEFAULT_SESSION: Session = {
+export const DEFAULT_SESSION: DTOSession = {
     circuit_key: 0,
     circuit_short_name: 'Not Found',
     country_code: 'Not Found',

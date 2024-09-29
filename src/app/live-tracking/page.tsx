@@ -7,7 +7,7 @@ import { getLatestSessionFromMeeting } from "@/api/openf1";
 import { inject, observer } from "mobx-react";
 import { MeetingInstance } from "@/stores/models/Meeting";
 import { useEffect, useState } from "react";
-import { Session } from "@/models/openf1/session";
+import { DTOSession } from "@/api/models/session";
 import AppStore from "@/stores/AppStore";
 import { Instance } from "mobx-state-tree";
 
@@ -16,7 +16,7 @@ interface MyComponentProps {
 }
 const LiveTracking = inject("store")(observer(({ store }: MyComponentProps) => {
     const { meeting: meetingStore } = store;
-    const [session, setSession] = useState<Session | null>(null);
+    const [session, setSession] = useState<DTOSession | null>(null);
 
     const loadData = async () => {
         await meetingStore.fetchLatestMeeting();

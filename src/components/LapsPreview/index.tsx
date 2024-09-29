@@ -1,7 +1,7 @@
 "use client"
 
-import { Lap } from "@/models/openf1/lap";
-import { Session } from "@/models/openf1/session";
+import { DTOLap } from "@/models/openf1/lap";
+import { DTOSession } from "@/models/openf1/session";
 import { getLapsFromSession } from '@/api/openf1';
 import { useEffect, useState } from "react";
 import LapsTable from "../Table/LapsTable";
@@ -10,10 +10,10 @@ import LapsTableSkeleton from "../Table/LapsTableSkeleton";
 const one_minute_into_ms = 60000;
 
 interface LapsPreviewProps {
-    session: Session
+    session: DTOSession
 }
 export default function LapsPreview({ session }: LapsPreviewProps) {
-    const [laps, setLapsMap] = useState<Lap[] | null>(null);
+    const [laps, setLapsMap] = useState<DTOLap[] | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
     const fetchInitialLaps = async () => {

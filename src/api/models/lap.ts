@@ -1,4 +1,4 @@
-export type Lap = {
+export type DTOLap = {
     date_start: string,
     driver_number: number,
     duration_sector_1: number,
@@ -19,7 +19,7 @@ export type Lap = {
     session_key: number,
 }
 
-export const DEFAULT_LAP: Lap = {
+export const DEFAULT_LAP: DTOLap = {
     date_start: "Not Found",
     driver_number: 0,
     duration_sector_1: 0,

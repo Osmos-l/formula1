@@ -1,4 +1,4 @@
-import { DTOMeeting } from '@/models/openf1/meeting';
+import { DTOMeeting } from '@/api/models/meeting';
 import { getRequest } from '@/api/httpService';
 import { MeetingInstance } from '@/stores/models/Meeting';
 import MeetingBuilder from '@/builders/MeetingBuilder';

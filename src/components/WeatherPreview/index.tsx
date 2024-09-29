@@ -1,18 +1,18 @@
 "use client"
 
-import { Session } from "@/models/openf1/session";
-import { Weather } from "@/models/openf1/weather";
+import { DTOSession } from "@/models/openf1/session";
+import { DTOWeather } from "@/models/openf1/weather";
 import { getLatestWeatherUpdateFromSession } from '@/api/openf1';
 import { convertToHumanReadableTimeWithoutTimeZone } from "@/utils/timestamp";
 import { useEffect, useState } from "react";
 
 interface WeatherPreviewProps {
-    session: Session
+    session: DTOSession
 }
 
 const one_minute_into_ms = 60000;
 
-const DisplayWeatherDetails = ({ weather }: { weather: Weather}) => {
+const DisplayWeatherDetails = ({ weather }: { weather: DTOWeather}) => {
     return (
         <div className="w-full flex items-center p-2">
             <p className="w-2/3">
@@ -27,7 +27,7 @@ const DisplayWeatherDetails = ({ weather }: { weather: Weather}) => {
 };
 
 export default function WeatherPreview({ session }: WeatherPreviewProps) {
-    const [weatherMap, setWeatherMap] = useState<Weather[] | null>(null);
+    const [weatherMap, setWeatherMap] = useState<DTOWeather[] | null>(null);
 
     const fetchWeather = async () => {
         setWeatherMap((await getLatestWeatherUpdateFromSession(session)));
