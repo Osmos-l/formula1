@@ -4,14 +4,18 @@ import LapsPreview from "@/components/LapsPreview";
 import MeetingPreview from "@/components/MeetingPreview";
 import WeatherPreview from "@/components/WeatherPreview";
 import { getLatestSessionFromMeeting } from "@/api/openf1";
-import { observer } from "mobx-react";
-import store from "@/stores/AppStore";
+import { inject, observer } from "mobx-react";
 import { MeetingInstance } from "@/stores/models/Meeting";
 import { useEffect, useState } from "react";
 import { Session } from "@/models/openf1/session";
+import AppStore, { AppStoreSnapshotIn } from "@/stores/AppStore";
+import { Instance } from "mobx-state-tree";
 
-const LiveTracking = observer(() => {
-    const meetingStore = store.meeting;
+interface MyComponentProps {
+    store: Instance<typeof AppStore>;
+}
+const LiveTracking = inject("store")(observer(({ store }: MyComponentProps) => {
+    const { meeting: meetingStore } = store;
     const [session, setSession] = useState<Session | null>(null);
 
     const loadData = async () => {
@@ -42,6 +46,6 @@ const LiveTracking = observer(() => {
         </div>
     </div>
   );
-});
+}));
 
 export default LiveTracking;

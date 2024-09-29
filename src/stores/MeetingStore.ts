@@ -28,4 +28,12 @@ const MeetingStore = types
         }),
     }))
 
+export const createDefaultMeetingStore = () => {
+    return MeetingStore.create({
+        latestMeeting: null,
+        meetings: [],
+        isLoading: false,
+    });
+};
+
 export default MeetingStore;
