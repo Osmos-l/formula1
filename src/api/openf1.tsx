@@ -1,5 +1,4 @@
 import { DEFAULT_LAP, DTOLap } from '@/api/models/lap';
-import { DTOMeeting } from '@/api/models/meeting';
 import { DTOSession, DEFAULT_SESSION } from '@/api/models/session';
 import { DTOWeather, DEFAULT_WEATHER} from '@/api/models/weather';
 import { sendErrorToDashboard } from '@/api/uncaughtException';
