@@ -1,5 +1,5 @@
 import { convertToHumanReadableDate, convertToHumanReadableTime } from '@/utils/timestamp';
-import { DTOSession } from '@/models/openf1/session';
+import { DTOSession } from '@/api/models/session';
 import { MeetingInstance } from '@/stores/models/Meeting';
 
 interface MeetingPreviewProps {

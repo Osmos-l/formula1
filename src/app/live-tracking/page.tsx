@@ -11,10 +11,10 @@ import { DTOSession } from "@/api/models/session";
 import AppStore from "@/stores/AppStore";
 import { Instance } from "mobx-state-tree";
 
-interface MyComponentProps {
+interface LiveTrackingProps {
     store: Instance<typeof AppStore>;
 }
-const LiveTracking = inject("store")(observer(({ store }: MyComponentProps) => {
+const LiveTracking = inject("store")(observer(({ store }: LiveTrackingProps) => {
     const { meeting: meetingStore } = store;
     const [session, setSession] = useState<DTOSession | null>(null);
 

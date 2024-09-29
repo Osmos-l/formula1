@@ -1,4 +1,4 @@
-import { DTOLap } from "@/models/openf1/lap";
+import { DTOLap } from "@/api/models/lap";
 
 const TableHeader = () => {
     return (

@@ -1,7 +1,7 @@
 "use client"
 
-import { DTOLap } from "@/models/openf1/lap";
-import { DTOSession } from "@/models/openf1/session";
+import { DTOLap } from "@/api/models/lap";
+import { DTOSession } from "@/api/models/session";
 import { getLapsFromSession } from '@/api/openf1';
 import { useEffect, useState } from "react";
 import LapsTable from "../Table/LapsTable";

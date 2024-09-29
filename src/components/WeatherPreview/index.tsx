@@ -1,7 +1,7 @@
 "use client"
 
-import { DTOSession } from "@/models/openf1/session";
-import { DTOWeather } from "@/models/openf1/weather";
+import { DTOSession } from "@/api/models/session";
+import { DTOWeather } from "@/api/models/weather";
 import { getLatestWeatherUpdateFromSession } from '@/api/openf1';
 import { convertToHumanReadableTimeWithoutTimeZone } from "@/utils/timestamp";
 import { useEffect, useState } from "react";
